@@ -1,16 +1,22 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeName } from "../store";
+import { changeName, changeCost } from "../store";
 
-const CarForm = () => {
+function CarForm() {
   const dispatch = useDispatch();
-  const name = useSelector((state) => {
-    return state.form.name;
+  const { name, cost } = useSelector((state) => {
+    return {
+      name: state.form.name,
+      cost: state.form.cost,
+    };
   });
 
   const handleNameChange = (event) => {
     dispatch(changeName(event.target.value));
-    //
+  };
+
+  const handleCostChange = (event) => {
+    const carCost = parseInt(event.target.value) || 0;
+    dispatch(changeCost(carCost));
   };
 
   return (
@@ -26,10 +32,31 @@ const CarForm = () => {
               onChange={handleNameChange}
             />
           </div>
+
+          {/* second */}
+          <div className="field">
+            <label className="label">Cost</label>
+            <input
+              className="input is-expanded"
+              value={cost || ""}
+              onChange={handleCostChange}
+              type="number"
+            />
+          </div>
         </div>
       </form>
     </div>
   );
-};
+}
 
 export default CarForm;
+
+/* Destructuring 
+  
+rather than assinging single value of array to single var 
+we write
+const [one, two, three] = arr;//arr[1,2,3]
+
+
+
+*/

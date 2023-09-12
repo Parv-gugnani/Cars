@@ -2,11 +2,10 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const carsSlice = createSlice({
   name: "cars",
-  intialState: {
+  initialState: {
     searchTerm: "",
     cars: [],
   },
-
   reducers: {
     changeSearchTerm(state, action) {
       state.searchTerm = action.payload;

@@ -1,14 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { createRoot } from "react-dom/client.js";
-
 import {
   carsReducer,
   addCar,
   removeCar,
   changeSearchTerm,
-} from "./slices/carsSlice.js";
-
-import { formReducer, changeName, changeCost } from "./slices/formReducer.js";
+} from "./slices/carsSlice";
+import { formReducer, changeName, changeCost } from "./slices/formSlice";
 
 const store = configureStore({
   reducer: {
