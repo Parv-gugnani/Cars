@@ -13,18 +13,14 @@ function CarForm() {
   const handleNameChange = (event) => {
     dispatch(changeName(event.target.value));
   };
-
   const handleCostChange = (event) => {
     const carCost = parseInt(event.target.value) || 0;
     dispatch(changeCost(carCost));
   };
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    dispatch(addCar(name, cost));
-    dispatch(changeCost(0));
-    dispatch(changeName(""));
+    dispatch(addCar({ name, cost }));
   };
 
   return (
@@ -41,7 +37,6 @@ function CarForm() {
             />
           </div>
 
-          {/* second */}
           <div className="field">
             <label className="label">Cost</label>
             <input
@@ -53,7 +48,7 @@ function CarForm() {
           </div>
         </div>
         <div className="field">
-          <button className="button is-link"></button>
+          <button className="button is-link">Submit</button>
         </div>
       </form>
     </div>
@@ -61,13 +56,3 @@ function CarForm() {
 }
 
 export default CarForm;
-
-/* Destructuring 
-  
-rather than assinging single value of array to single var 
-we write
-const [one, two, three] = arr;//arr[1,2,3]
-
-
-
-*/

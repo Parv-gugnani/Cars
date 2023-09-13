@@ -1,9 +1,7 @@
-import React from "react";
-import useDispatch from "react-redux";
-import { changeSearchTerm, searchTermChange } from "../store";
-import useSelector from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { changeSearchTerm } from "../store";
 
-const CarSearch = () => {
+function CarSearch() {
   const dispatch = useDispatch();
   const searchTerm = useSelector((state) => {
     return state.cars.searchTerm;
@@ -12,6 +10,7 @@ const CarSearch = () => {
   const handleSearchTermChange = (event) => {
     dispatch(changeSearchTerm(event.target.value));
   };
+
   return (
     <div className="list-header">
       <h3 className="title is-3">My Cars</h3>
@@ -21,10 +20,10 @@ const CarSearch = () => {
           className="input"
           value={searchTerm}
           onChange={handleSearchTermChange}
-        ></input>
+        />
       </div>
     </div>
   );
-};
+}
 
 export default CarSearch;

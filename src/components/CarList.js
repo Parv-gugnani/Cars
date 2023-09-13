@@ -1,8 +1,7 @@
-import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeCar } from "../store";
 
-const CarList = () => {
+function CarList() {
   const dispatch = useDispatch();
   const cars = useSelector(({ cars: { data, searchTerm } }) => {
     return data.filter((car) =>
@@ -29,12 +28,13 @@ const CarList = () => {
       </div>
     );
   });
+
   return (
     <div className="car-list">
       {renderedCars}
       <hr />
     </div>
   );
-};
+}
 
 export default CarList;
